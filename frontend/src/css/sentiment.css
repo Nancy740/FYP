@@ -1,0 +1,35 @@
+
+
+.questions-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .question-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .radio-options {
+    display: flex;
+  }
+  
+  .radio-label {
+    margin-right: 10px;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  
+  .header-container span {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
