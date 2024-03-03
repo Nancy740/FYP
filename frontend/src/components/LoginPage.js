@@ -1,7 +1,11 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "../css/login.css";
 import { useState } from 'react';
+import { CiUser } from "react-icons/ci";
+import { CiLock } from "react-icons/ci";
+import { FcGoogle } from "react-icons/fc";
+import { BiLogoFacebookCircle } from "react-icons/bi";
+
 
 
 const LoginPage = () => {
@@ -42,26 +46,29 @@ const LoginPage = () => {
         <h1>Log In</h1>
 
       <div className='inputform'>
-        <i className="fas fa-user"></i>
-        <input type="email" name="email" placeholder="Enter the email" id='email' value={email} onChange={(e)=>setEmail(e.target.value)} className="inputicon" />
+        <CiUser className='icon'/>
+        <input type="email" name="email" placeholder= "Enter the email" id='email' value={email} onChange={(e)=>setEmail(e.target.value)} /> 
         {errorMessage && <p className="error">{errorMessage}</p>}
       </div>
 
       <div className='inputform'>
-        <i className="fas fa-lock"></i>
-        <input type="password" name="password" placeholder="Enter the password" id='password' value={password} onChange={(e)=>setPassword(e.target.value)} className="input-with-icon"/>
+        <CiLock className='icon' />
+        <input type="password" name="password" placeholder="Enter the password" id='password' value={password} onChange={(e)=>setPassword(e.target.value)} />
       </div>
      
       <div className="remember-forgot">
-        <label><input type="checkbox" id="checkbox"/>Remember me</label>
-        <a href="/forgetpassword"id='forgot-link'>Forgot password?</a>
+        <label><input type="checkbox" id="checkbox"/>Remember me </label>
+        <a href="/forgot"id='forgot-link'>Forgot password?</a>
       </div>
    
-      <button onClick={login}>Login</button>
-      <hr /> {/* Horizontal line */}
-      <button><i className="fab fa-google" ></i> Login with Google</button>
-      <button><i className="fab fa-facebook"></i> Login with Facebook</button>
-      <hr /> 
+        <button className='button' onClick={login}>Login</button>
+        <hr /> {/* Horizontal line */}
+        <button className='social-button'>
+        <FcGoogle  className='social-icon'/>Login with Google</button>
+
+        <button className="social-button">
+        <BiLogoFacebookCircle /> Login with Facebook</button>
+        <hr/> 
 
       <div className='register-link'>
         <a href="/register">Create an Account</a>

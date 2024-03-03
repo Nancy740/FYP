@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
- background-color: #7A9BCF; 
+  background-color: #7A9BCF; 
  
 }
 
@@ -13,7 +13,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 73vh;
+  height: 70vh;
 }
 
 #logo {
@@ -29,61 +29,63 @@
   margin-top: 10px;
 }
 
-.inputform{
+
+.inputform {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   margin-left: 1rem;
   width: 50vh;
+  align-items: center;
   margin-top: 10px;
-
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 3px 3px;
 }
-
-.inputicon{
+.inputform input {
   padding-left: 30px; 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0 48c-63.6 0-192 31.9-192 96v32c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64v-32c0-64-128.4-96-192-96zm0 256c-88.2 0-164.3-35.5-214.4-92.6C21.7 421.2 36.6 448 64 448h320c27.4 0 42.3-26.8 54.4-84.6-50.1 57-126.2 92.6-214.4 92.6z"></path></svg>');
-  background-size: 15px; 
-  background-position: 8px 50%; 
-  background-repeat: no-repeat;
-  border: 1px solid aliceblue;
-  border-radius: 5px; 
-}
-.input-with-icon {
-  padding-left: 30px; 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 224h-24V160c0-70.7-57.3-128-128-128S120 89.3 120 160v64H96c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h304c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-216-64c0-35.3 28.7-64 64-64s64 28.7 64 64v64H184v-64zm216 272H96V272h304v160z"></path></svg>');
-  background-size: 15px; 
-  background-position: 8px 50%;
-  background-repeat: no-repeat;
-  border: 1px solid aliceblue; 
-  border-radius: 5px; 
-}
-
-
-input {
   margin: 5px 5px;
-  padding: 10px 10px;
   width: 100%;
   font-size: 12px;
   border-radius: 8px;
-  border: none;
-  margin-left: 1rem;
+  outline: none;
+  height: 3vh;
+  border: 1px solid white;
+ 
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .remember-forgot {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   justify-content: space-between;
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
+
+
+
+#forgot-link {
+  text-decoration: none;
 }
 
 .remember-forgot label{
+
   color: aliceblue;
   font-size: 12px;
+
 }
 
 input[type="checkbox"] {
   width: 15px;
-  margin-left: 2rem;
-  
+  margin-left: 1rem;
 }
 
 .remember-forgot a {
@@ -92,49 +94,64 @@ input[type="checkbox"] {
   font-size: 12px; 
   margin-right: 2rem;
 }
-
-
 #forgot-link:hover {
   cursor: pointer; 
   color: #1f3b7e; 
   text-decoration: underline; 
 }
-button {
+
+.button {
   background-color: #55bcfb;
   font-size: 14px;
   font-weight: bold;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  margin-left: 2rem;
+  margin-left: 1rem;
   padding: 5px 5px;
-  width: 47vh;
+  width: 50vh;
   border-radius: 8px;
   border: none;
   color: aliceblue;
   margin-bottom: 10px;
+
  
 }
+.social-button {
+  background-color: #55bcfb;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 5px 5px;
+  width: 50vh;
+  border-radius: 8px;
+  border: none;
+  color: aliceblue;
+  margin-bottom: 10px;
 
+}
+
+.social-icon {
+  margin-right: 15px; 
+}
 button:hover {
   background-color: #1f3b7e;
 }
 
-hr {
-  border: none;
-  border-top: 1px solid aliceblue ;
- 
-}
 .error {
   color: red;
 }
 
 .register-link a {
-  justify-content: center;
   color: aliceblue; 
   text-decoration: none; 
   font-size: 12px;
   margin-left: 9rem;
+
+  
 }
 
 .register-link a:hover {
@@ -143,160 +160,6 @@ hr {
   color: #1f3b7e;
 }
 
-.input-icon{
-  padding-left: 30px; 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0 48c-63.6 0-192 31.9-192 96v32c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64v-32c0-64-128.4-96-192-96zm0 256c-88.2 0-164.3-35.5-214.4-92.6C21.7 421.2 36.6 448 64 448h320c27.4 0 42.3-26.8 54.4-84.6-50.1 57-126.2 92.6-214.4 92.6z"></path></svg>');
-  background-size: 15px; 
-  background-position: 8px 50%; 
-  background-repeat: no-repeat;
-  border: 1px solid aliceblue;
-  border-radius: 5px; 
+img,svg{
+  color: rgb(26, 61, 125);
 }
-.inputwith-icon {
-  padding-left: 30px; 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 224h-24V160c0-70.7-57.3-128-128-128S120 89.3 120 160v64H96c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h304c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-216-64c0-35.3 28.7-64 64-64s64 28.7 64 64v64H184v-64zm216 272H96V272h304v160z"></path></svg>');
-  background-size: 15px; 
-  background-position: 8px 50%;
-  background-repeat: no-repeat;
-  border: 1px solid aliceblue; 
-  border-radius: 5px; 
-}
-
-/* .login-container{
-  display: flex;
-  flex-direction: column; 
-  background-color: aquamarine;
-
- }
-
- .Login{
-  width: 420px;
-  background-color: #7A9BCF;
- }
-
- .inputform{
-  position: relative;
-  width: 100%;
-  height:50px;
-  margin: 30px 0;;
- }
-
- 
- .inputform input{
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none; 
-  border-radius: 10px;
- }
- .inputform input::placeholder{
-  color: black;
- }
-
- .inputform .inputicon{
-  position: absolute;
- 
- }
-
- .remember-forgot{
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin: -15px 0 15px;
- } */
-/* #logo
-{
- height: 80px;
- width: 80px;
- 
-}
-     */
-/* .txt {
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-
-   
-  } */
-
-
-/* .error {
-    color: #c11010;
-}
-
-.inputform{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 2rem;
-    width: 450px;
-  
-  }
-  
-.inputicon{
-    
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0 48c-63.6 0-192 31.9-192 96v32c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64v-32c0-64-128.4-96-192-96zm0 256c-88.2 0-164.3-35.5-214.4-92.6C21.7 421.2 36.6 448 64 448h320c27.4 0 42.3-26.8 54.4-84.6-50.1 57-126.2 92.6-214.4 92.6z"></path></svg>');
-    background-size: 15px; 
-    background-position: 8px 50%; 
-    background-repeat: no-repeat;
-    border: 1px solid #ccc;
-    border-radius:
-     5px; }
-.input-with-icon {
-    padding-left: 30px; 
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 224h-24V160c0-70.7-57.3-128-128-128S120 89.3 120 160v64H96c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h304c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-216-64c0-35.3 28.7-64 64-64s64 28.7 64 64v64H184v-64zm216 272H96V272h304v160z"></path></svg>'); Font Awesome lock icon data URL */
-    /* background-size: 15px; 
-    background-position: 8px 50%;
-    background-repeat: no-repeat;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-  
-  }
-input {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    width: 70%;
-    font-size: 12px;
-    margin-top: 20px;
-    border-radius: 8px;
-    border: none;
-    margin-left: 3rem;
-  
-  }
-  
-  
-button {
-    background-color: #55bcfb;
-    font-size: 18px;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-   
-  }
-  
-button:hover {
-    background-color: #1f3b7e;
-  }
-
-.checkbox {
-      display: flex;
-      align-items: center;
-      margin-right: 5rem;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  margin-left: 5px;
-  color: white;
-}
-
-input[type="checkbox"] {
-  width: 10px;
-}
-
-.forget-password {
-  margin-left: 43px;
-}   */
- 

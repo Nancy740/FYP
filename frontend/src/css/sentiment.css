@@ -1,35 +1,74 @@
+.sentiment{
+  background-color: #D1E1F7;
+  
+}
 
+h2{
+   margin-left: 40rem;
+   color:#297194;
+}
 
 .questions-container {
     display: flex;
     flex-direction: column;
-  }
-  
-  .question-container {
+}
+
+.question {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
-  
-  .radio-options {
+    font-size: 18px;
+    font-weight: 400;
+   
+}
+
+.radio-options {
     display: flex;
-  }
-  
-  .radio-label {
+}
+
+.radio-label {
     margin-right: 10px;
-  }
+    width: 20px; /* Added width to make the label clickable */
+    height: 20px; /* Added height to make the label clickable */
+}
 
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color:#297194;
+}
 
+
+.yes-no-container {
+  margin-right: 15px;
   
-  .header-container span {
-    margin-left: 10px;
-    display: flex;
-    flex-direction: row-reverse;
+}
+
+.yes-no-container span {
+  margin-right: 12px;
+  font-size: 16px; 
+  font-weight: 500;
+}
+
+.submit-button{
+  background-color: #55bcfb;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 50rem; 
+  padding: 5px 5px;
+  width: 20vh;
+  border-radius: 37px;
+  border: none;
+  color: aliceblue;
+  margin-top: 20px;
+  
+}
+
+  .submit-button:hover {
+    background-color: #1f3b7e;
   }
   
