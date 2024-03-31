@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class NencyConfig(AppConfig):
+class MyappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'nency'
+    name = 'myapp'
