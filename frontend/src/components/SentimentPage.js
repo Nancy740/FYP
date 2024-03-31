@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import "../css/sentiment.css";
 
 const SentimentPage = () => {
-  const [answersPart1, setAnswersPart1] = useState(Array(10).fill(null));
-  const [answersPart2, setAnswersPart2] = useState(Array(10).fill(null));
+  const [answersPart1, setAnswersPart1] = useState(Array(10).fill(""));
+  const [answersPart2, setAnswersPart2] = useState(Array(10).fill(""));
 
   const handleAnswerChange = (part, index, answer) => {
     switch (part) {
@@ -21,8 +22,34 @@ const SentimentPage = () => {
     }
   };
 
+  const submit = async () => {
+    var formData={
+      "answerpart1": answersPart1,
+      "answerpart2": answersPart2,
+    };
+    console.log(answersPart1);
+    try {
+      const response = await fetch('http://127.0.0.1:8000/sentiment/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        console.log('Data submitted successfully');
+      } else {
+        console.error('Failed to submit data');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
+  };
+  
+
   const renderQuestions = (part, questions) => (
-     <div className="sentiment-container">
+    <div className="sentiment">
       {questions.map((question, index) => (
         <div key={index} className="question">
           <p>{question}</p>
@@ -67,11 +94,13 @@ const SentimentPage = () => {
       <div className="sentiment-container">
         <div className='header-container'>
           <h3>Part 1: Physical Well-being</h3>
-          <div class="yes-no-container">
-          <span>YES</span>
-          <span>NO</span>
+          <div className="yes-no-container">
+            <span>YES</span>
+            <span>NO</span>
           </div>
         </div>
+
+
 
       {renderQuestions('part1', [
         '1. Have you experienced changes in your appetite, such as eating much more or much less than usual?',
@@ -102,7 +131,7 @@ const SentimentPage = () => {
         '10. Do you often worry excessively about the future or have intrusive thoughts about potential negative outcomes?',
       ])}
           </div>
-    <button className='submit-button'>Submit</button>
+    <button className='submit-button' onClick={submit}>Submit</button>
     </div>
   
   );

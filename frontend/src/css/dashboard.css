@@ -1,4 +1,24 @@
-.body-wrapper
-{
-    color: aquamarine;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  transition: margin-left 0.3s ease; /* Add transition for smooth sliding */
+  margin-left: 0; /* Start with no margin */
+}
+
+
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stat {
+  flex: 1;
+  margin: 0 10px;
+  border: 1px solid #8e1a1a;
+  padding: 10px;
+  text-align: center;
 }

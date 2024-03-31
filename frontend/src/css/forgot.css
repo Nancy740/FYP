@@ -1,17 +1,12 @@
 .Forgot {
-  width: 60vh;
+  width: 55vh;
   background-color: #99B4DF;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 50vh;
+  height: 45vh;
 }
 
-#logo {
-  width: 70px;
-  margin: 0 auto; 
-  display: block; 
-}
 .Forgot h1{
   color: aliceblue;
   text-align: center;
@@ -20,7 +15,7 @@
   margin-top: 10px;
 }
 .Forgot p{
-  font-size: 12px;
+  font-size: 14px;
   color: aliceblue;
   text-align: center;
 } 
@@ -46,7 +41,6 @@
   outline: none;
   height: 3vh;
   border: 1px solid white;
- 
 }
 
 .verify-link a {
