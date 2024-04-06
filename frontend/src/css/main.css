@@ -228,9 +228,144 @@ display: flex;
   height: 120px;
   flex-direction: column;
 } */
-
 .main{
   background: scroll;
-  background-color: red;
-  /* background-image: url("/assets/background.png"); */
+  margin: 0;
+  padding: 0;
+  background-color: #99B4DF;
+
+
+}
+.landing{
+  /* background-color: rgb(216 216 216); */
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+
+ 
+}
+/* .container-1{
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+} */
+
+.grid1{
+  justify-content: center;
+}
+
+.grid1 h1{
+  margin-top: 5rem;
+  /* margin-left: 15rem; */
+  text-align: center;
+}
+.grid1 p{
+font-size: 16px;
+line-height: 1.5; 
+margin-left: 18rem;
+text-align: inline;
+
+}
+.grid2 img{
+  /* margin-left: 15rem; */
+  text-align: center;
+  margin-top: 2rem;
+}
+.land-button {
+  background-color: #55bcfb;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  /* border: none; */
+  cursor: pointer;
+  margin-left: 18rem;
+  padding: 5px 5px;
+  width: 20vh;
+  /* border-radius: 8px; */
+  border: none;
+  color: aliceblue;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.about{
+  /* background-color: antiquewhite; */
+  padding: 10px;
+  margin-top: 5rem;
+  
+}
+
+.heading h1{
+text-align: center;
+margin-top: 10px;
+}
+
+.about p{
+  text-align: center;
+  line-height: 1.5; 
+  /* margin-bottom: 20px; */
+}
+
+.provide{
+   /* background-color: rgb(183, 89, 89); */
+   grid-template-rows: 1fr ; 
+   display: grid;
+   margin: 5rem  7rem 0 7rem;
+    
+}
+.provide .grid-container{
+   grid-template-columns: 1fr 1fr 1fr; 
+   display: grid;
+   justify-items: center;
+   /* grid: repeat(3, 60px) / auto-flow 80px; */
+}
+.provide .grid-container .grid-1 p ,
+.provide .grid-container .grid-2 p,
+.provide .grid-container .grid-3 p{
+  font-size: 16px;
+  font-weight:bold;
+  margin-left: 6rem;
+}
+.provide .grid-container .grid-1 img,
+.provide .grid-container .grid-2 img,
+.provide .grid-container .grid-3 img   {
+  width: 400px; 
+  height: 350px; 
+  
+}
+
+.instruction{
+  grid-template-rows: 1fr ; 
+  display: grid;
+  margin-top: 5rem;
+  /* margin: 5rem  7rem 0 7rem; */  
+}
+
+.instruction .instruction-container{
+   grid-template-columns: 1fr 1fr 1fr; 
+   display: grid;
+   justify-items: center;
+   margin: 0 7rem 0 7rem;
+}
+
+.instruction .instruction-container .ins-grid-1 ,
+.instruction .instruction-container .ins-grid-2 ,
+.instruction .instruction-container .ins-grid-3 {
+  display: grid;
+  justify-items: center;
+  background-color: #fff;
+  width: 350px;
+  height:350px;
+  border-radius: 40px;
+  }
+
+/* .instruction .instruction-container .ins-grid-1 h2,
+.instruction .instruction-container .ins-grid-2 h2,
+.instruction .instruction-container .ins-grid-3 h2{
+  margin-left: 5rem;
+} */
+
+.instruction .instruction-container .ins-grid-1 p,
+.instruction .instruction-container .ins-grid-2 p,
+.instruction .instruction-container .ins-grid-3 p{
+ font-size: 16px;
+ font-weight: bold;
 }

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-
 import "../css/dashboard.css";
 import Navbar from './Navbar';
-
 
 const Dashboard = () => {
   return (

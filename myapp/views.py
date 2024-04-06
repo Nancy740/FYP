@@ -17,6 +17,7 @@ def login(request):
         data=json.loads(request.body)
         password=data.get('password')
         email=data.get('email')
+        print(f'Email: {email}, Password: {password}')
 
     # Authenticate user
         try:

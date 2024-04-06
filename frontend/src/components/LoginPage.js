@@ -7,6 +7,16 @@ import { FcGoogle } from "react-icons/fc";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 
 
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/Check';
+
+function SimpleAlert() {
+  return (
+    <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+      Login Successfully
+    </Alert>
+  );
+}
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +36,7 @@ const LoginPage = () => {
       });
       const data = await response.json();
       if (data['success'] === true) {
-        return (window.location.href = '/register');
+         return (window.location.href = '/register');
       } 
       else {
         setErrorMessage('Please enter valid format.eg:abc@gmail.com');
@@ -62,7 +72,7 @@ const LoginPage = () => {
       </div>
    
         <button className='button' onClick={login}>Login</button>
-        <hr /> {/* Horizontal line */}
+        <hr />
         <button className='social-button'>
         <FcGoogle  className='social-icon'/>Login with Google</button>
 
@@ -73,11 +83,11 @@ const LoginPage = () => {
       <div className='register-link'>
         <a href="/register">Create an Account</a>
       </div>
-    </div>
+    </div> 
   </form>
 </div>
 
-</>
+ </>
 )}
 
 export default LoginPage;
