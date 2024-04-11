@@ -35,7 +35,7 @@ const Register = () => {
      <div className='login-container'>
       <form>
         <div className="Register">
-          <img id='logo' src="../assets/logo.png"/>
+          <img id='logo' src="../assets/landinglogo.png"/>
           <h1>Sign Up</h1>
   
         <div className='inputform'>

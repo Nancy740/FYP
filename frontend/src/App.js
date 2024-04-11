@@ -9,11 +9,11 @@ import SentimentPage from './components/SentimentPage';
 import ForgetPassword from './components/ForgotPassword';
 import Verification from './components/Verification';
 import Reset from './components/Reset';
-
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-// import Popup from './components/Popup';
 
 import LandingPage from './components/LandingPage';
+import Medical from './components/Medical';
 
 
 function App() {
@@ -29,11 +29,11 @@ function App() {
         <Route exact path="/reset" element={<Reset />} />
         <Route exact path="/navbar" element={<Navbar />} />
         <Route exact path="/landing" element={<LandingPage />} />
-       
-        {/* <Route exact path="/popup" element={<Popup />} /> */}
-        
+        <Route exact path="/footer" element={<Footer />} />
+        <Route exact path="/medical" element={<Medical />} />
+
       </Routes>
-      {/* <Footer /> */}
+     
     </Router>
   );
 }

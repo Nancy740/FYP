@@ -23,17 +23,17 @@ export const Reset = () => {
       <div className='login-container'>
         <form>
           <div className="Forgot">
-            <img id='logo' src="../assets/logo.png"/>
+            <img id='logo' src="../assets/landinglogo.png"/>
             <h1>Reset Password</h1>
             <p>Create a new password that must contain 8 characters<br/> with a combination of letters,numbers, and <br/>special characters (@!#$.)<br/></p>
             
-            <div className='forgot-inputform'>
+            <div className='input-form'>
             <input type="password" name="newPassword" placeholder="Enter the new password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
             </div>
-            <div className='forgot-inputform'>
+            <div className='input-form'>
             <input type="password" name="confirmPassword" placeholder="Re-enter the new password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
             </div>
-            <button className='button' onClick={reset}>Reset</button> 
+            <button className='send-button' onClick={reset}>Reset</button> 
             {errorMessage && <p>{errorMessage}</p>} 
           </div>
         </form>

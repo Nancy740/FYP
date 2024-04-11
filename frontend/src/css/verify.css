@@ -1,13 +1,76 @@
-.verify-link a {
-    color: aliceblue; 
-    text-decoration: none; 
-    font-size: 12px;
-    margin-left: 8rem;
+.Forgot {
+  width: 55vh;
+  background-color: #99B4DF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 60vh;
+  align-content: center;
+}
+
+.Forgot h1{
+  color: aliceblue;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
   }
-  
-  .verify-link a:hover {
-    text-decoration: underline; 
-    cursor: pointer; 
-    color: #1f3b7e;
-  }
-  
+.Forgot p
+{
+
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.Forgot .input-form {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+  width: 50vh;
+  align-items: center;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 3px 3px;
+
+}
+.Forgot .input-form input {
+  padding-left: 30px; 
+  margin: 5px 5px;
+  width: 100%;
+  font-size: 12px;
+  border-radius: 8px;
+  outline: none;
+  height: 3vh;
+  border: 1px solid white;
+ 
+}
+.send-button{
+    display: inline-flex;
+      align-items: center;
+   
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    outline: 0;
+    border: 0;
+    margin-left:13rem;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 6px 16px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: #fff;
+    background-color: #1976d2;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}

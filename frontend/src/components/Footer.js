@@ -1,33 +1,89 @@
-import React from 'react';
+// import React from 'react';
+import { useTheme } from "@emotion/react";
+import { Box, Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { IconButton } from "@mui/material";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Footer = () => {
   return (
-    <footer className="bg-light text-center text-lg-start">
-      <div className="container p-4">
-        <div className="row">
-          <div className="col-lg-6">
-            <p>Get connected with us on social networks:</p>
-          </div>
-          <div className="col-lg-6">
-            <ul className="list-unstyled">
-              <li>
-                <a href="#!">Facebook</a>
-              </li>
-              <li>
-                <a href="#!">Twitter</a>
-              </li>
-              <li>
-                <a href="#!">Instagram</a>
-              </li>
-            </ul>
-          </div>
+    <Box
+    
+      width="100%%"
+    
+      display="flex"
+      justifyContent="space-between"
+      flexWrap="wrap"
+      columnGap="10px"
+     
+    
+      sx={{ backgroundColor: "#fff"}} // Apply white background and padding using sx prop
+    >
+      <Box width="30%" ml='8rem'>
+        <Typography variant="h5" fontWeight="bold" mb="20px" mt="3rem">
+          Mental Health Sentiment Analysis
+        </Typography>
+        <div>
+          Disclaimer: User-generated content; we bear no legal responsibility
+          for service
+          <br />
+          quality or accuracy. Use at your own discretion.
         </div>
-      </div>
-      <div className="text-center p-3">
-        Company name © 2024
-      </div>
-    </footer>
+        <Typography variant="h6" mt="2rem">
+          1166 National Helpline for Suicide Prevention
+          <br />
+          ©2024 All rights reserved.
+        </Typography>
+      </Box>
+
+      <Box width="15%">
+        <Typography variant="h5" fontWeight="bold" mb="20px" mt="3rem">
+          Quick Links
+        </Typography>
+        <Typography ml="3rem" mb="10px">
+          About Us
+        </Typography>
+        <Typography ml="3rem" mb="10px">
+          Services
+        </Typography>
+        <Typography ml="3rem" mb="10px">
+          Terms & Conditions
+        </Typography>
+        <Typography ml="3rem" mb="10px">
+          Privacy Policy
+        </Typography>
+      </Box>
+
+      <Box width="30%">
+        <Typography variant="h5" fontWeight="bold" mb="10px" mt="3rem">
+          Email Us:
+        </Typography>
+        <Box sx={{ width: 400, maxWidth: "100%" }}>
+          <TextField fullWidth label="Enter your email" id="fullWidth" />
+        </Box>
+
+        <Typography variant="h5" fontWeight="bold" mb="10px" mt="2rem">
+          Connect with us:
+        </Typography>
+
+        <Box display="flex" alignItems="center" mb="2rem">
+        <IconButton style={{ color: "blue", fontSize: '20px' }}>
+
+            <FacebookIcon />
+          </IconButton>
+          <IconButton style={{ color: "inherit" }}>
+            <WhatsAppIcon />
+          </IconButton>
+          <IconButton style={{ color: "inherit" }}>
+            <InstagramIcon />
+          </IconButton>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
 export default Footer;
+
