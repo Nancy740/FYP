@@ -29,7 +29,7 @@ const Navbar = () => {
       path: "/landing",
     },
     {
-      text: "About",
+      text: "Blogs",
       path: "/landing",
     },
     {
@@ -59,10 +59,12 @@ const Navbar = () => {
       </div>
       <div className="navbar-links-container">
         <a href="/landing">Home</a>
-        <a href="/landing">About</a>
+        <a href="/landing">Blogs</a>
         <a href="/sentiment">Sentiment</a>
-        <a href="/sentiment">Contact</a>
+        <a href="/landing">Contact</a>
+        <a href="/login">
         <Button variant="contained">Log in</Button>
+        </a>
               {/* <button className="primary-button" >Log in</button> */}
       </div>
       <div className="navbar-menu-container">

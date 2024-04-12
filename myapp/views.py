@@ -124,3 +124,30 @@ def receive_data(request):
             return JsonResponse({'error': 'Invalid JSON data'}, status=400)
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+
+
+@csrf_exempt
+def contact(request):   
+    if request.method == 'POST':
+        data=json.loads(request.body)
+        # Process the form data
+        first_name = data.get('firstName')
+        last_name = data.get('lastName')
+        email = data.get('email')
+        message = data.get('message')
+        print(first_name)
+        print(last_name)
+        
+        contact = Contact.objects.create(
+            first_name = first_name,
+            last_name = last_name, 
+            email = email,
+            message = message
+        )
+        contact.save()
+
+
+        return JsonResponse({'message': 'Form submitted successfully'})
+    else:
+        # Return an error response if the request method is not POST
+        return JsonResponse({'error': 'Invalid request method'}, status=400)    
