@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Button from '@mui/material/Button';
 import "../css/medical.css";
 
 const Medical = () => {
@@ -38,7 +39,9 @@ const Medical = () => {
             <label>Diagnosis 2:</label>
             <input type="text" />
           </div>
-          <button>Add more</button>
+          <button className='add-more'>Add more...</button>
+
+
         </div>
 
         <div className="section">
@@ -60,7 +63,7 @@ const Medical = () => {
             </div>
           </div>
 
-          <button>Add more</button>
+          <button className='add-more'>Add more...</button>
         </div>
         <button className='submit-button-medical'>Submit</button>
       </div>

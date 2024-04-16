@@ -23,10 +23,15 @@ const Register = () => {
         body: JSON.stringify({ email, password, confirmpassword }),
       });
 
-      const data = await response.json(); // Assuming the response is JSON
-      console.log(data); // Handle the response from the backend
-    } catch (error) {
+      const data = await response.json(); 
+      if (data["success"] === true) {
+        return (window.location.href = "/login");
+      } else {
+        setErrorMessage("Registration unsuccessful");
+      }
+     } catch (error) {
       console.error(error);
+      setErrorMessage("An error occurred, please try again later");
     }
   };
 

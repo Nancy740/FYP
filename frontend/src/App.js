@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import LoginPage from './components/LoginPage'; 
 import Register from './components/Register'; 
-import Dashboard from './components/Dashboard'; 
+import Dashboard from './admin/Dashboard'; 
 import SentimentPage from './components/SentimentPage';
 import ForgetPassword from './components/ForgotPassword';
 import Verification from './components/Verification';
@@ -14,6 +14,7 @@ import Navbar from './components/Navbar';
 
 import LandingPage from './components/LandingPage';
 import Medical from './components/Medical';
+import Blog from './components/Blog';
 
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
         <Route exact path="/landing" element={<LandingPage />} />
         <Route exact path="/footer" element={<Footer />} />
         <Route exact path="/medical" element={<Medical />} />
+        <Route exact path="/blog" element={<Blog />} />
+       
+
 
       </Routes>
      

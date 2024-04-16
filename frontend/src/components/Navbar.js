@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-
 import { HiOutlineBars3 } from "react-icons/hi2";
 
 import {
@@ -14,6 +12,8 @@ import {
   Divider,
 } from "@mui/material";
 import Button from "@mui/material/Button";
+
+
 
 import "../css/navbar.css";
 const Navbar = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
     },
     {
       text: "Blogs",
-      path: "/landing",
+      path: "/blog",
     },
     {
       text: "Services",
@@ -41,9 +41,9 @@ const Navbar = () => {
       path: "/sentiment",
     },
     {
-      text: "Contact",
+      text: "Medical History",
 
-      path: "/landing",
+      path: "/medical",
     },
   
     {
@@ -59,18 +59,18 @@ const Navbar = () => {
       </div>
       <div className="navbar-links-container">
         <a href="/landing">Home</a>
-        <a href="/landing">Blogs</a>
+        <a href="/blog">Blogs</a>
         <a href="/sentiment">Sentiment</a>
-        <a href="/landing">Contact</a>
+        <a href="/medical">Medical History</a>
         <a href="/login">
         <Button variant="contained">Log in</Button>
         </a>
-              {/* <button className="primary-button" >Log in</button> */}
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
       </div>
       <Drawer open={openMenu} onClose={() => setOpenMenu(false)} anchor="right">
+     
         <Box
           sx={{ width: 250 }}
           role="presentation"

@@ -1,22 +1,48 @@
 import React, { useState } from 'react';
 
 
+
 export const Reset = () => {
-  const [newPassword, setNewPassword] = useState(''); // State for new password
-  const [confirmPassword, setConfirmPassword] = useState(''); // State for confirming password
+  const [newPassword, setNewPassword] = useState(''); 
+  const [confirmPassword, setConfirmPassword] = useState(''); 
   const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState('');
+  
+
   const reset = async (e) => {
     e.preventDefault();
- 
+    setEmail(localStorage.getItem('email'))
     if (newPassword !== confirmPassword) {
       setErrorMessage('Passwords do not match');
       return; 
     }
-    const success = true;
-    if (success) {
-      window.location.href = "/login";
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/reset/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          newPassword,
+          email,
+        }),
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        localStorage.clear();
+        window.location.href = "/login";
+      } else {
+        // Password reset failed, display error message
+        setErrorMessage(data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('Failed to reset password. Please try again later.');
     }
   };
+
 
   return (
     <>

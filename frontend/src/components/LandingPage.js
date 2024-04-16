@@ -69,15 +69,13 @@ const LandingPage = () => {
           </div>
           <p>
             We are passionately dedicated to promoting mental health awareness
-            and fostering well-being within our community. Our mission is simple
-            yet profound:<br></br>
-            we strive to empower individuals with the tools, resources, and
-            insights necessary to enhance their emotional resilience and lead
-            fulfilling lives. Our team consists<br></br> of dedicated
-            professionals, including mental health counselors, educators, and
-            advocates, who are passionate about making a positive impact on the
-            lives of others.<br></br> We leverage evidence-based practices and
-            innovative approaches to provide comprehensive support and guidance
+            and fostering well-being within our community. Our mission is simple<br></br>
+            yet profound: we strive to empower individuals with the tools, resources, and
+            insights necessary to enhance their emotional resilience and lead <br></br>
+            fulfilling lives.Our team consists of dedicated professionals, including mental health counselors, educators, and
+            advocates, who are passionate <br></br>about making a positive impact on the
+            lives of others. We leverage evidence-based practices and
+            innovative approaches <br></br> to provide comprehensive support and guidance
             to individuals of all ages and backgrounds.
           </p>
         </div>
@@ -138,34 +136,26 @@ const LandingPage = () => {
 
             <div className=" contact-form">
               <div className="con-grid-1">
-                {/* <label>First Name</label>
-                            <input type="text" name="name" id='name'  value={formData.firstName} onChange={handleChange}/> */}
-                <Box width="80%">
+          
+              <Box width="100%">
                   <Typography variant="h6" fontWeight="bold" mb="10px">
                     First Name
                   </Typography>
                   <Box sx={{ width: 350, maxWidth: "100%" }}>
-                    {/* <TextField
+                    <TextField
                       fullWidth
-                      id="firstName"
+                      id="fullWidth"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                    /> */}
-                    <TextField
-                        id="outlined-controlled" 
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                     />
+                    />
                   </Box>
                 </Box>
               </div>
 
               <div className="con-grid-2">
-                {/* <label>Last Name</label>
-                            <input type="text" name="name" id='name' value={formData.lastName} onChange={handleChange} /> */}
-                <Box width="80%">
+                
+                <Box width="100%">
                   <Typography variant="h6" fontWeight="bold" mb="10px">
                     Last Name
                   </Typography>
@@ -190,7 +180,7 @@ const LandingPage = () => {
                 <Typography variant="h6" fontWeight="bold" mb="10px">
                   Email
                 </Typography>
-                <Box sx={{ width: 650, maxWidth: "100%" }}>
+                <Box sx={{ width: 705 , maxWidth: "100%" }}>
                   <TextField
                     fullWidth
                    
@@ -210,7 +200,7 @@ const LandingPage = () => {
                 <Typography variant="h6" fontWeight="bold" mb="10px">
                   Message
                 </Typography>
-                <Box sx={{ width: 650, maxWidth: "100%" }}>
+                <Box sx={{ width: 705, maxWidth: "100%" }}>
                   <TextField
                     fullWidth
                     id="fullWidth"

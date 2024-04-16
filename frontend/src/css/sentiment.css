@@ -1,6 +1,6 @@
 .sentiment{
   background-color:#99B4DF;
-  height: max-content;
+/* margin-top: 3rem; */
 
   
 }
@@ -8,12 +8,14 @@
 .sentiment-heading  h2{
   color: #261a1acf;
     text-align: center;
+
   
 }
 
 .questions-container {
     display: flex;
     flex-direction: column;
+   
  
 }
 
@@ -92,7 +94,7 @@
     box-sizing: border-box;
     outline: 0;
     border: 0;
-    margin: 3rem 0 3rem 55rem;
+    margin: 3rem 0 3rem 48rem;
     cursor: pointer;
     vertical-align: middle;
     text-decoration: none;

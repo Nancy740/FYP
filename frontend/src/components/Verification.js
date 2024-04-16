@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../css/verify.css'
 
 export const Verification = () => {
   const [code, setCode] = useState(''); 
-  const [errorMessage, setErrorMessage] = useState('');
+  // const [errorMessage, setErrorMessage] = useState('');
       const verify = async (e) => {
         e.preventDefault();
         const success=true
         if (success) {
-          window.location.href = "/code";
+          window.location.href = "/reset";
         }
             } 
      

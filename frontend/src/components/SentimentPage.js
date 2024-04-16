@@ -93,21 +93,24 @@ const SentimentPage = () => {
 
   return (
     <>
+     <Navbar />
    
     <div className='sentiment'>
-    <Navbar />
-    <div className='sentiment-heading'>
-      <h2>QUESTIONNAIRES TO PREDICT MENTAL HEALTH</h2>
-      </div>
-      <div className="sentiment-container">
-        <div className='header-container'>
-          <h3>Part 1: Physical Well-being</h3>
-          <div className="yes-no-container">
-            <span>YES</span>
-            <span>NO</span>
-          </div>
+        <div className='sentiment-box'>
+        <div className='sentiment-heading'>
+          <h2>QUESTIONNAIRES TO PREDICT MENTAL HEALTH</h2>
         </div>
 
+
+        <div className="sentiment-container">
+          <div className='header-container'>
+            <h3>Part 1: Physical Well-being</h3>
+            <div className="yes-no-container">
+              <span>YES</span>
+              <span>NO</span>
+            </div>
+          </div>
+     </div>
 
 
       {renderQuestions('part1', [

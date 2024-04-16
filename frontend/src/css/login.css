@@ -12,7 +12,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 55vh;
+  height: 60vh;
 }
 
 #logo {
@@ -151,7 +151,7 @@ button:hover {
   color: aliceblue; 
   text-decoration: none; 
   font-size: 12px;
-  margin-left: 12rem;
+  margin-left: 10rem;
   margin-top: 10px;
 
   
@@ -165,4 +165,10 @@ button:hover {
 
 img,svg{
   color: rgb(26, 61, 125);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
 }

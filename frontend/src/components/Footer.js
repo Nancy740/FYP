@@ -22,16 +22,15 @@ const Footer = () => {
       sx={{ backgroundColor: "#fff"}} // Apply white background and padding using sx prop
     >
       <Box width="30%" ml='8rem'>
-        <Typography variant="h5" fontWeight="bold" mb="20px" mt="3rem">
+        <Typography variant="h5" fontWeight="bold" mb="20px" mt="4rem">
           Mental Health Sentiment Analysis
         </Typography>
-        <div>
+        <div ml='4rem'>
           Disclaimer: User-generated content; we bear no legal responsibility
-          for service
-          <br />
-          quality or accuracy. Use at your own discretion.
+          for service <br />
+quality or accuracy. Use at your own discretion.
         </div>
-        <Typography variant="h6" mt="2rem">
+        <Typography variant="h6" mt="2rem" ml="3rem">
           1166 National Helpline for Suicide Prevention
           <br />
           ©2024 All rights reserved.
@@ -39,19 +38,19 @@ const Footer = () => {
       </Box>
 
       <Box width="15%">
-        <Typography variant="h5" fontWeight="bold" mb="20px" mt="3rem">
+        <Typography variant="h5" fontWeight="bold" mb="20px" mt="3rem" textAlign= "center">
           Quick Links
         </Typography>
-        <Typography ml="3rem" mb="10px">
+        <Typography textAlign= "center" mb="10px">
           About Us
         </Typography>
-        <Typography ml="3rem" mb="10px">
+        <Typography textAlign= "center" mb="10px">
           Services
         </Typography>
-        <Typography ml="3rem" mb="10px">
+        <Typography textAlign= "center" mb="10px">
           Terms & Conditions
         </Typography>
-        <Typography ml="3rem" mb="10px">
+        <Typography textAlign= "center" mb="10px">
           Privacy Policy
         </Typography>
       </Box>
@@ -60,7 +59,7 @@ const Footer = () => {
         <Typography variant="h5" fontWeight="bold" mb="10px" mt="3rem">
           Email Us:
         </Typography>
-        <Box sx={{ width: 400, maxWidth: "100%" }}>
+        <Box sx={{ width: 300, maxWidth: "100%" }}>
           <TextField fullWidth label="Enter your email" id="fullWidth" />
         </Box>
 

@@ -21,14 +21,14 @@
 .grid1 p {
   font-size: 18px;
   line-height: 1.5;
-  margin-left: 18rem;
+  margin-left: 12rem;
   text-align: inline;
   color: white;
 }
 .grid2 img {
   text-align: center;
   margin-top: 10rem;
-  margin-left: 15rem;
+  margin-left: 12rem;
 }
 .land-button {
   display: inline-flex;
@@ -78,6 +78,7 @@
   line-height: 1.5;
   color: white;
   font-size: 18px;
+
 }
 
 .provide {
@@ -89,6 +90,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
   justify-items: center;
+  grid-gap: 5px;
+  align-items: center;
+  justify-content: space-between;
 }
 .provide .grid-container .grid-1 p,
 .provide .grid-container .grid-2 p,
@@ -101,8 +105,8 @@
 .provide .grid-container .grid-1 img,
 .provide .grid-container .grid-2 img,
 .provide .grid-container .grid-3 img {
-  width: 400px;
-  height: 350px;
+  width: 350px;
+  height: 300px;
 }
 
 .instruction {
@@ -115,7 +119,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
   justify-items: center;
-  margin: 0 7rem 0 7rem;
+  margin-left: 7rem;
+  grid-gap: 5px;
+  width: 85%;
 }
 
 .instruction .instruction-container .ins-grid-1,
