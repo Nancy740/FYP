@@ -1,24 +1,122 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  transition: margin-left 0.3s ease; /* Add transition for smooth sliding */
-  margin-left: 0; /* Start with no margin */
+
+.home-container{
+  background-color: aqua;
+ height: 100vh;
+ display: flex;
+
 }
+.homebody
+{
+  display: flex;
+  justify-content:space-around;
+  width: 100%;
+  flex-grow: 1;
+  margin-top: 5rem;
+}
+
+.homebody .dashboard {
+  width: 105vh;
+  height:50vh;
+  background-color: #ffffffda;
+  padding: 10px;
+  box-shadow: 0 0 5px rgb(221, 203, 203);
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+ 
+}
+
 
 
 
 .stats {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 700px;
+  margin-left: 8rem;
+  margin-top: 1rem;
+
+
 }
 
 .stat {
-  flex: 1;
-  margin: 0 10px;
-  border: 1px solid #8e1a1a;
-  padding: 10px;
+  background-color: rgba(10, 37, 81, 0.555);
+  
+  line-height: 1px;
+  border-radius: 5px;
   text-align: center;
+  margin-bottom: 8px; 
+  height: 80px;
+  width: 216px;
+  border: none;
+  box-shadow: 0 0 5px rgb(255, 253, 253);
 }
+
+.stat h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.stat p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* .news-container {
+  width: 360px;
+  background-color:  #ffffffda;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgb(241, 232, 232);
+  padding: 5px;
+  height: 65vh;
+  margin-top: 1rem;
+  margin-right: 5rem;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+
+.news-container .paragraph {
+  font-size: 24px;
+  font-weight: bolder;
+  color: rgba(23, 23, 23, 0.806);
+  text-align: center;
+  margin-left: 1rem;
+
+}
+
+
+.notice {
+  display: inline-grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  grid-gap: 20px;
+  width: 55vh;
+}
+
+.notice select {
+  margin: 0 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.notice select option {
+  background-color: #4850e3d1;
+  color: #fff;
+} 
+
+.news{
+  font-size: 10px;
+} */

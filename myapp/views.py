@@ -14,6 +14,10 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import make_password
 import pickle
 from . import models
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import LabelEncoder
+import re
 
 
 
@@ -127,21 +131,45 @@ def sentiment(request):
             data = json.loads(request.body)
             print(data)
             print(data.get('answerpart1',[]))
-            answers_part1 = data.get('answerspart1', [])
-            answers_part2 = data.get('answerspart2', [])
-            received_data = [answers_part1,answers_part2] 
-            # print(os.getcwd())
-            # model_path = os.path.join(os.getcwd(), "model\\svc.pkl")
+            print(data.get('answerpart2',[]))
+           
+            answers_part1 = data.get('answerpart1', [])
+            answers_part2 = data.get('answerpart2', [])
+           
+            print(answers_part1)
+            print(answers_part2)   
+            received_data = answers_part1+answers_part2
+            print("Receive data",received_data)
 
-            with open(r'backend/model/svc.pkl', 'rb') as f:
+         
+            # vectorizer= TfidfVectorizer(ngram_range=(1, 3))
+            # tf_x_train = vectorizer.fit_transform(received_data)
+            # print(tf_x_train)
+            
+            # Encoder = LabelEncoder()
+            # Train_Y = Encoder.fit_transform(received_data)
+
+            # print(Train_Y)
+
+             # binary_data = [1 if entry == 'yes' else 0 for entry in received_data]
+            # print(binary_data)
+
+            # reshaped_data = np.array(binary_data).reshape(-1,1)
+            # print("Reshaped data (1D array):", reshaped_data)
+           
+       
+            with open(r'backend/model/data.pkl', 'rb') as f:
                 model = pickle.load(f)
                 print(model)
             
-            # # predictions = model.predict(received_data)
-            # predictions = model.predict([[1]])
-            # print('Predictions:', predictions)
+            
+            predictions = model.predict(received_data)
+            print('Predictions:', predictions)
 
-        
+            if prediction[0] == 1:
+                return jsonify({"prediction": "The model predicts that the user has mental issues."})
+            else:
+                return jsonify({"prediction": "The model predicts that the user does not have mental issues."})
             return JsonResponse({'success': True, 'message': 'Data received and processed successfully'})
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
@@ -149,43 +177,18 @@ def sentiment(request):
         return JsonResponse({'success': False, 'message': 'Invalid request method'})
 
 
-# @csrf_exempt
-# def receive_data(request):
-#     if request.method == 'POST':
-#         try:
-#             # Parse JSON data from request body
-#             received_data = json.loads(request.body)
-#             print('Received data:', received_data)
-#             return JsonResponse({'message': 'Data received successfully'})
-#         except json.JSONDecodeError:
-#             return JsonResponse({'error': 'Invalid JSON data'}, status=400)
-#     else:
-#         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
-
-# @csrf_exempt
-# def predictions(request):
-#     # if request.method == 'POST':
-#     if True:
-#         try:
-#             # Load the model from the pickle file
-#             with open('model/svc.pkl', 'rb') as f:
-#                 model = pickle.load(f)
-
-#             # Parse JSON data from request body
-#             received_data = json.loads(request.body)
-#             print('Received data:', received_data)
-
-#             # Assuming your model.predict() function expects some data
-#             predictions = model.predict(received_data)
-#             print('Predictions:', predictions)
-#             # Return the prediction or render a template with the result
-#             return JsonResponse({'predictions': predictions.tolist()})  # Convert predictions to list if necessary
-#         except FileNotFoundError:
-#             return JsonResponse({'error': 'Model file not found'}, status=500)
-#         except Exception as e:
-#             return JsonResponse({'error': str(e)}, status=500)
-#     else:
-#         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+@csrf_exempt
+def receive_data(request):
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from request body
+            received_data = json.loads(request.body)
+            print('Received data:', received_data)
+            return JsonResponse({'message': 'Data received successfully'})
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
 @csrf_exempt
 def contact(request):   

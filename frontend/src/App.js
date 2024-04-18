@@ -1,20 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
-import LoginPage from './components/LoginPage'; 
-import Register from './components/Register'; 
-import Dashboard from './admin/Dashboard'; 
-import SentimentPage from './components/SentimentPage';
-import ForgetPassword from './components/ForgotPassword';
-import Verification from './components/Verification';
-import Reset from './components/Reset';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
 
-import LandingPage from './components/LandingPage';
-import Medical from './components/Medical';
-import Blog from './components/Blog';
+import LoginPage from './components/User/LoginPage'; 
+import Register from './components/User/Register'; 
+
+import SentimentPage from './components/User/SentimentPage';
+import ForgetPassword from './components/User/ForgotPassword';
+import Verification from './components/User/Verification';
+import Reset from './components/User/Reset';
+import Footer from './components/User/Footer';
+import Navbar from './components/User/Navbar';
+
+import LandingPage from './components/User/LandingPage';
+import Medical from './components/User/Medical';
+import Blog from './components/User/Blog';
+import Dashboard from './components/admin/Dashboard';
+
+import { Sidebar } from 'react-pro-sidebar';
+import Topbar from './components/admin/TopBar';
+
+
 
 
 function App() {
@@ -23,7 +29,7 @@ function App() {
       <Routes>
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
+       
         <Route exact path="/sentiment" element={<SentimentPage />} />
         <Route exact path="/forgot" element={<ForgetPassword />} />
         <Route exact path="/verify" element={<Verification />} />
@@ -33,6 +39,9 @@ function App() {
         <Route exact path="/footer" element={<Footer />} />
         <Route exact path="/medical" element={<Medical />} />
         <Route exact path="/blog" element={<Blog />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/sidebar" element={<Sidebar />} />
+        <Route exact path="/topbar" element={<Topbar />} />
        
 
 
