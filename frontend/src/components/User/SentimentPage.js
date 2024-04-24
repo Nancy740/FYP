@@ -93,9 +93,9 @@ const SentimentPage = () => {
 
   return (
     <>
-     <Navbar />
    
-    <div className='sentiment'>
+      <div className='sentiment'>
+    {/* <Navbar /> */}
         <div className='sentiment-box'>
         <div className='sentiment-heading'>
           <h2>QUESTIONNAIRES TO PREDICT MENTAL HEALTH</h2>

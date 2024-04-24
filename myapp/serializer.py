@@ -13,5 +13,11 @@ from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model=UserAuth
-        fields = '_all_'
+        model = UserAuth
+        fields = '__all__'
+    
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        # Remove the 'password' field from the serialized data
+        data.pop('password', None)
+        return data

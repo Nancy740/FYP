@@ -7,6 +7,7 @@ import { BiLogoFacebookCircle } from "react-icons/bi";
 import 'reactjs-popup/dist/index.css';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 
 
 const LoginPage = () => {
@@ -30,7 +31,15 @@ const LoginPage = () => {
       return () => clearTimeout(timerId);
     }
   }, [location.search]);
-
+  const setCookies = (name, value, days) => {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  };
   const login = async (e) => {
     e.preventDefault();
     console.log(email, password);
@@ -44,6 +53,8 @@ const LoginPage = () => {
       });
       const data = await response.json();
       if (data["success"] === true) {
+      
+        setCookies("token", data.message, 1);
         window.location.href = "/landing?message=login_success";
 
       } else {

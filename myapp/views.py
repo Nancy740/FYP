@@ -16,57 +16,47 @@ import pickle
 from . import models
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.preprocessing import LabelEncoder
 import re
-
+import jwt
+from sklearn.svm import LinearSVC
+import joblib
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 @csrf_exempt
 def login(request):
-    if request.method=='POST':
-        data=json.loads(request.body)
-        password=data.get('password')
-        email=data.get('email')
-        print(f'Email: {email}, Password: {password}')
-
-    # Authenticate user
+    if request.method == 'POST':
+        data_json = json.loads(request.body)
+        email= data_json.get("email")
+        password = data_json.get("password")
+        print(email,password)
         try:
-            user = UserAuth.objects.get(email=email, password=password)
-        except UserAuth.DoesNotExist:
-            user = None
-
-        if user:
-            # Authentication successful
-            return JsonResponse({"success": True, "message": "Login successful"})
-        else:
-            # Authentication failed
-            return JsonResponse({"success": False, "message": "Invalid credentials"})
-
-    # Incorrect HTTP method or other cases
-    return JsonResponse({"success": False, "message": "incorrect method"})
+            user=UserAuth.objects.get(email=email)
+            responsedata=UserSerializer(user)
+            token = jwt.encode(responsedata.data, "secret", algorithm="HS256")
+            request.session['token'] = token
+            request.session.save()
+            print(request.session.get('token'))
+            print(token)
+            if (password==user.password):
+                return JsonResponse({"success":True,"message":token})
+            else:  
+                return JsonResponse({"success":False,"message":"password doesn't match"})
+        except Exception as e:
+            return JsonResponse({"success":False,"message":str(e)})
+    return JsonResponse({"success":False,"message": "The request should be POST"})
 
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        print(data)
-        email = data.get('email')
-        password = data.get('password')
-        confirmPassword = data.get('confirmpassword')
-
-        if password != confirmPassword:
-            return JsonResponse({'success': False, 'message': 'Passwords do not match'})
-
-        try:
-            user = UserAuth.objects.get(email=email)
-            return JsonResponse({'success': False, 'message': 'User already exists'})
-        except UserAuth.DoesNotExist:
-            user = UserAuth.objects.create(
-                email=email,
-                password=password
-            )
+        data_json = json.loads(request.body)
+        serializer = UserSerializer(data=data_json)
+        
+        if serializer.is_valid():
+            user = serializer.save()
             user.save()
-            return JsonResponse({'success': True, 'message': 'User created successfully'})
+            return JsonResponse({"success":True,"message": "Signup successful"})
+
     else:
         return JsonResponse({'message': 'Invalid request method'})
 
@@ -124,57 +114,187 @@ def reset(request):
     return JsonResponse("It should be post")
 
     
+
 @csrf_exempt
 def sentiment(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
             print(data)
-            print(data.get('answerpart1',[]))
-            print(data.get('answerpart2',[]))
-           
+
+            # Extracting answers from request data
             answers_part1 = data.get('answerpart1', [])
             answers_part2 = data.get('answerpart2', [])
-           
-            print(answers_part1)
-            print(answers_part2)   
-            received_data = answers_part1+answers_part2
-            print("Receive data",received_data)
 
-         
-            # vectorizer= TfidfVectorizer(ngram_range=(1, 3))
-            # tf_x_train = vectorizer.fit_transform(received_data)
-            # print(tf_x_train)
-            
-            # Encoder = LabelEncoder()
-            # Train_Y = Encoder.fit_transform(received_data)
+            # Combining answers from both parts
+            received_data = answers_part1 + answers_part2
+            print(received_data)
 
-            # print(Train_Y)
+            try:
+                # Loading the trained model
+                with open(r'backend/model/svm2.pkl', 'rb') as f: 
+                    model_data = pickle.load(f)
+                    # print(f"saved instance: {saved_data}")
+                    print(model_data)
+             
+                   
+                    # vectorizer_vocab =  model_data.vectorizer_vocab
+                    # print(vectorizer_vocab)
 
-             # binary_data = [1 if entry == 'yes' else 0 for entry in received_data]
-            # print(binary_data)
-
-            # reshaped_data = np.array(binary_data).reshape(-1,1)
-            # print("Reshaped data (1D array):", reshaped_data)
-           
-       
-            with open(r'backend/model/data.pkl', 'rb') as f:
-                model = pickle.load(f)
-                print(model)
+            except FileNotFoundError:
+                return JsonResponse({'success': False, 'message': 'Could not find the pickle file.'})
+            except KeyError:
+                return JsonResponse({'success': False, 'message': 'Missing "model" or "vectorizer_vocab" key in the pickle file.'})
+            except Exception as e:
+                print(f"Error: {e}")
+                return JsonResponse({'success': False, 'message': 'An error occurred while loading the model.'})
             
             
-            predictions = model.predict(received_data)
-            print('Predictions:', predictions)
+            # Initialize TF-IDF Vectorizer with vocabulary from trained model
+            # vectorizer = TfidfVectorizer(vocabulary=vectorizer_vocab)
+            vectorizer = TfidfVectorizer()
+            print(vectorizer)
+    
+            # Transforming the received data into TF-IDF matrix
+            tfidf_matrix = vectorizer.fit_transform(["have you experienced changes in your appetite such as eating much more or much less than usual"])
+            print(tfidf_matrix)
+                
+            reshaped_gay = tfidf_matrix.reshape(1, -1)
+            # Making predictions using the loaded model
+            predictions = model_data.predict(reshaped_gay)
+            print(predictions)
+            
 
-            if prediction[0] == 1:
-                return jsonify({"prediction": "The model predicts that the user has mental issues."})
-            else:
-                return jsonify({"prediction": "The model predicts that the user does not have mental issues."})
-            return JsonResponse({'success': True, 'message': 'Data received and processed successfully'})
+            # Converting predictions into human-readable format
+            prediction_text = ["The model predicts that the user has mental issues." if pred == 1 
+                               else  "The model predicts that the user does not have mental issues." 
+                               for pred in predictions]
+
+            return JsonResponse({'success': True, 'predictions': prediction_text})
+
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
+        except Exception as e:
+            print(f"Error: {e}")
+          
+            return JsonResponse({'success': False, 'message': 'An unexpected error occurred.'})
     else:
         return JsonResponse({'success': False, 'message': 'Invalid request method'})
+
+
+
+# def sentiment(request):
+#     if request.method == 'POST':
+#         try:
+#             data = json.loads(request.body)
+#             print(data)
+
+#             # Extracting answers from request data
+#             answers_part1 = data.get('answerpart1', [])
+#             answers_part2 = data.get('answerpart2', [])
+
+#             # Combining answers from both parts
+#             received_data = answers_part1 + answers_part2
+#             print(received_data)
+
+#             try:
+#                 # Loading the trained model
+#                 with open(r'backend/model/datas.pkl', 'rb') as f:
+#                     saved_data = pickle.load(f)
+#                     model = saved_data['model']
+#                     print(model)
+#                     vectorizer_vocab = saved_data['vectorizer_vocab']
+#             except FileNotFoundError:
+#                 return JsonResponse({'success': False, 'message': 'Could not find the pickle file.'})
+#             except KeyError:
+#                 return JsonResponse({'success': False, 'message': 'Missing "model" or "vectorizer_vocab" key in the pickle file.'})
+#             except Exception as e:
+#                 print(f"Error: {e}")
+#                 return JsonResponse({'success': False, 'message': 'An error occurred while loading the model.'})
+
+#             # Initialize TF-IDF Vectorizer with vocabulary from trained model
+#             vectorizer = TfidfVectorizer(vocabulary=vectorizer_vocab)
+
+#             # Transforming the received data into TF-IDF matrix
+#             tfidf_matrix = vectorizer.transform(received_data)
+
+#             # Making predictions using the loaded model
+#             predictions = model.predict(tfidf_matrix)
+
+#             # Converting predictions into human-readable format
+#             prediction_text = ["The model predicts that the user has mental issues." if pred == 1 
+#             else  "The model predicts that the user does not have mental issues." for pred in predictions]
+
+#             return JsonResponse({'success': True, 'predictions': prediction_text})
+
+#         except json.JSONDecodeError:
+#             return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
+#         except Exception as e:
+#             print(f"Error: {e}")
+#             print(traceback.format_exc())
+#             return JsonResponse({'success': False, 'message': 'An unexpected error occurred.'})
+#     else:
+#         return JsonResponse({'success': False, 'message': 'Invalid request method'})
+
+
+    # if request.method == 'POST':
+    #     try:
+    #         data = json.loads(request.body)
+    #         print(data)
+    #         print(data.get('answerpart1',[]))
+    #         print(data.get('answerpart2',[]))
+           
+    #         answers_part1 = data.get('answerpart1', [])
+    #         answers_part2 = data.get('answerpart2', [])
+           
+    #         print(answers_part1)
+    #         print(answers_part2)   
+    #         received_data = answers_part1+answers_part2
+    #         print("Receive data",received_data)
+           
+    #         # recieved_array = np.array(received_data)
+    #         # print(recieved_array,"recieved array")
+
+    #         # reshaped_data = recieved_array.reshape(-1,1)
+    #         # print(reshaped_data,"reshaped data")
+
+    #         # Initialize TF-IDF Vectorizer
+    #         tfidf_vectorizer = TfidfVectorizer()
+
+    #         # Fit and transform the data
+    #         tfidf_matrix = tfidf_vectorizer.fit_transform(received_data)
+
+                        
+    #         # # Initialize LabelEncoder
+    #         # label_encoder = LabelEncoder()
+    #         # print(label_encoder,"label encoder")
+
+    #         # # Fit and transform the data
+    #         # encoded_data = label_encoder.fit_transform(received_data)
+    #         # print(encoded_data,"encoded data")
+
+    #         # # Reshape the encoded data to make it 2D
+    #         # reshaped_encoded_data = encoded_data.reshape(4, 5)
+    #         # print(reshaped_encoded_data,"reshaped encoded data")
+
+            
+    #         with open(r'backend/model/data.pkl', 'rb') as f:
+    #             model = pickle.load(f)
+    #             print(model)
+            
+            
+    #         predictions = model.predict(tfidf_matrix)
+    #         print('Predictions:', predictions)
+
+    #         if prediction[0] == 1:
+    #             return jsonify({"prediction": "The model predicts that the user has mental issues."})
+    #         else:
+    #             return jsonify({"prediction": "The model predicts that the user does not have mental issues."})
+    #         return JsonResponse({'success': True, 'message': 'Data received and processed successfully'})
+    #     except json.JSONDecodeError:
+    #         return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
+    # else:
+    #     return JsonResponse({'success': False, 'message': 'Invalid request method'})
 
 
 @csrf_exempt
@@ -215,3 +335,45 @@ def contact(request):
     else:
         # Return an error response if the request method is not POST
         return JsonResponse({'error': 'Invalid request method'}, status=400)     
+
+
+
+@csrf_exempt
+def medical(request):   
+    if request.method == 'POST':
+        data = json.loads(request.body)
+       
+        full_name = data.get('fullName')
+        age = data.get('age')
+        diagnosis = data.get('diagnosis')
+        medications = data.get('medications')
+        
+        medical_record = MedicalRecord.objects.create(
+            full_name=full_name,
+            age=age,
+            diagnosis=diagnosis,
+            medications=medications
+        )
+        medical_record.save()
+
+        return JsonResponse({'message': 'Form submitted successfully'})
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+@csrf_exempt
+def checkuser(request):
+    if request.method=="POST":
+        usertoken=request.headers.get('Authorization')
+        token=request.session.get('token')
+        print(usertoken)
+        print("token:",token)
+        if usertoken == token:
+            print("success")
+            return JsonResponse({"success":True})
+        else:
+            print("not")
+            return JsonResponse({"success":False})
+
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=400 )
+    

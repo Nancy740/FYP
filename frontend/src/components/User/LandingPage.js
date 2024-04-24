@@ -14,6 +14,7 @@ const LandingPage = () => {
     email: "",
     message: "",
   });
+  
   const [successMessage, setSuccessMessage] = useState("");
   const location = useLocation();
 
@@ -31,6 +32,8 @@ const LandingPage = () => {
     }
   }, [location.search]);
   
+
+
  const handleChange = (e) => {
   const { name, value } = e.target;
   setFormData({ ...formData, [name]: value });
@@ -60,7 +63,6 @@ const LandingPage = () => {
   
   return (
     <>
-      <Navbar />
    
       <div className="main">
       {successMessage && (
@@ -80,7 +82,7 @@ const LandingPage = () => {
             </a>
           </div>
           <div className="grid2">
-            <img src="../assets/image.png" alt="Well-being illustration" />
+            <img src="../assets/image.png" alt="Well-being" />
           </div>
         </div>
         <div className="about">
@@ -230,7 +232,7 @@ const LandingPage = () => {
                     multiline
                     rows={4}
                     variant="outlined"
-                    // sx={{ height: "400px" }}
+                  
                   />
                 </Box>
               </Box>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import login,register,forgot,sentiment,contact,forgot,reset
+from .views import login,register,forgot,sentiment,contact,forgot,reset,medical,checkuser
 
 
 
@@ -12,7 +12,8 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('forgot/', forgot, name='forgot'),
     path('reset/', reset, name='reset'),
-    # path('receive_data/', receive_data, name='receive_data'),
+    path('medical/', medical, name='medical'),
+    path('checkuser/',checkuser,name="checkuser"),
     # path('predictions/', predictions, name='predictions'),
 
 
