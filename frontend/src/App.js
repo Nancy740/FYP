@@ -39,7 +39,7 @@ function App() {
         <Route exact path="/verify" element={<Verification />} />
         <Route exact path="/reset" element={<Reset />} />
         <Route exact path="/navbar" element={<Navbar />} />
-        <Route exact path="/landing" element={<LandingPage />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/footer" element={<Footer />} />
         <Route exact path="/medical" element={<Medical />} />
         <Route exact path="/blog" element={<Blog />} />

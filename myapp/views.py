@@ -21,7 +21,11 @@ import jwt
 from sklearn.svm import LinearSVC
 import joblib
 from django.core.serializers.json import DjangoJSONEncoder
-
+from pickle import load
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from json import loads, dumps
+from tensorflow.python.keras.saving import pickle_utils
 
 @csrf_exempt
 def login(request):
@@ -106,15 +110,6 @@ def reset(request):
             data = UserAuth.objects.get(email=email)
             data.password = new_password
            
-
-            data.save()
-            print(data)
-            return JsonResponse({'success': True, 'message': 'Password changed successfully'})
-        return JsonResponse("User doesnot exist")
-    return JsonResponse("It should be post")
-
-    
-
 @csrf_exempt
 def sentiment(request):
     if request.method == 'POST':
@@ -129,173 +124,49 @@ def sentiment(request):
             # Combining answers from both parts
             received_data = answers_part1 + answers_part2
             print(received_data)
-
+           
             try:
-                # Loading the trained model
-                with open(r'backend/model/svm2.pkl', 'rb') as f: 
-                    model_data = pickle.load(f)
-                    # print(f"saved instance: {saved_data}")
-                    print(model_data)
-             
-                   
-                    # vectorizer_vocab =  model_data.vectorizer_vocab
-                    # print(vectorizer_vocab)
-
+                # Loading the trained model and tokenizer
+                # with open(r'backend/model/lstm.pkl', 'rb') as f: 
+                #     model_data = pickle.load(f)
+                #     print(model_data)
+                    loaded_model = keras.models.load_model('backend/model/lstm.h5')
+                    loaded_model = model_data['model']
+                    print(loaded_model)
+                    tokenizer = model_data['tokenizer']
+                    max_sequence_length = model_data['max_sequence_length']
+            
             except FileNotFoundError:
                 return JsonResponse({'success': False, 'message': 'Could not find the pickle file.'})
             except KeyError:
-                return JsonResponse({'success': False, 'message': 'Missing "model" or "vectorizer_vocab" key in the pickle file.'})
+                return JsonResponse({'success': False, 'message': 'Missing required keys in the pickle file.'})
             except Exception as e:
                 print(f"Error: {e}")
                 return JsonResponse({'success': False, 'message': 'An error occurred while loading the model.'})
             
-            
-            # Initialize TF-IDF Vectorizer with vocabulary from trained model
-            # vectorizer = TfidfVectorizer(vocabulary=vectorizer_vocab)
-            vectorizer = TfidfVectorizer()
-            print(vectorizer)
-    
-            # Transforming the received data into TF-IDF matrix
-            tfidf_matrix = vectorizer.fit_transform(["have you experienced changes in your appetite such as eating much more or much less than usual"])
-            print(tfidf_matrix)
-                
-            reshaped_gay = tfidf_matrix.reshape(1, -1)
-            # Making predictions using the loaded model
-            predictions = model_data.predict(reshaped_gay)
-            print(predictions)
-            
+            # Tokenize the user input
+            input_text_seq = tokenizer.texts_to_sequences([received_data])
+            input_text_pad = pad_sequences(input_text_seq, maxlen=max_sequence_length)
 
-            # Converting predictions into human-readable format
-            prediction_text = ["The model predicts that the user has mental issues." if pred == 1 
-                               else  "The model predicts that the user does not have mental issues." 
-                               for pred in predictions]
+            # Make predictions using the loaded model
+            predictions = loaded_model.predict(input_text_pad)
 
-            return JsonResponse({'success': True, 'predictions': prediction_text})
+            # Get the predicted class label
+            predicted_label = np.argmax(predictions[0])
 
-        except json.JSONDecodeError:
-            return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
+            # Map the predicted label to the corresponding class name
+            class_names = ['Depression', 'Anxiety', 'Normal']
+            predicted_class = class_names[predicted_label]
+
+            return JsonResponse({'success': True, 'predicted_class': predicted_class})
+
         except Exception as e:
             print(f"Error: {e}")
-          
-            return JsonResponse({'success': False, 'message': 'An unexpected error occurred.'})
-    else:
-        return JsonResponse({'success': False, 'message': 'Invalid request method'})
+            return JsonResponse({'success': False, 'message': str(e)})
 
+ 
 
-
-# def sentiment(request):
-#     if request.method == 'POST':
-#         try:
-#             data = json.loads(request.body)
-#             print(data)
-
-#             # Extracting answers from request data
-#             answers_part1 = data.get('answerpart1', [])
-#             answers_part2 = data.get('answerpart2', [])
-
-#             # Combining answers from both parts
-#             received_data = answers_part1 + answers_part2
-#             print(received_data)
-
-#             try:
-#                 # Loading the trained model
-#                 with open(r'backend/model/datas.pkl', 'rb') as f:
-#                     saved_data = pickle.load(f)
-#                     model = saved_data['model']
-#                     print(model)
-#                     vectorizer_vocab = saved_data['vectorizer_vocab']
-#             except FileNotFoundError:
-#                 return JsonResponse({'success': False, 'message': 'Could not find the pickle file.'})
-#             except KeyError:
-#                 return JsonResponse({'success': False, 'message': 'Missing "model" or "vectorizer_vocab" key in the pickle file.'})
-#             except Exception as e:
-#                 print(f"Error: {e}")
-#                 return JsonResponse({'success': False, 'message': 'An error occurred while loading the model.'})
-
-#             # Initialize TF-IDF Vectorizer with vocabulary from trained model
-#             vectorizer = TfidfVectorizer(vocabulary=vectorizer_vocab)
-
-#             # Transforming the received data into TF-IDF matrix
-#             tfidf_matrix = vectorizer.transform(received_data)
-
-#             # Making predictions using the loaded model
-#             predictions = model.predict(tfidf_matrix)
-
-#             # Converting predictions into human-readable format
-#             prediction_text = ["The model predicts that the user has mental issues." if pred == 1 
-#             else  "The model predicts that the user does not have mental issues." for pred in predictions]
-
-#             return JsonResponse({'success': True, 'predictions': prediction_text})
-
-#         except json.JSONDecodeError:
-#             return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
-#         except Exception as e:
-#             print(f"Error: {e}")
-#             print(traceback.format_exc())
-#             return JsonResponse({'success': False, 'message': 'An unexpected error occurred.'})
-#     else:
-#         return JsonResponse({'success': False, 'message': 'Invalid request method'})
-
-
-    # if request.method == 'POST':
-    #     try:
-    #         data = json.loads(request.body)
-    #         print(data)
-    #         print(data.get('answerpart1',[]))
-    #         print(data.get('answerpart2',[]))
-           
-    #         answers_part1 = data.get('answerpart1', [])
-    #         answers_part2 = data.get('answerpart2', [])
-           
-    #         print(answers_part1)
-    #         print(answers_part2)   
-    #         received_data = answers_part1+answers_part2
-    #         print("Receive data",received_data)
-           
-    #         # recieved_array = np.array(received_data)
-    #         # print(recieved_array,"recieved array")
-
-    #         # reshaped_data = recieved_array.reshape(-1,1)
-    #         # print(reshaped_data,"reshaped data")
-
-    #         # Initialize TF-IDF Vectorizer
-    #         tfidf_vectorizer = TfidfVectorizer()
-
-    #         # Fit and transform the data
-    #         tfidf_matrix = tfidf_vectorizer.fit_transform(received_data)
-
-                        
-    #         # # Initialize LabelEncoder
-    #         # label_encoder = LabelEncoder()
-    #         # print(label_encoder,"label encoder")
-
-    #         # # Fit and transform the data
-    #         # encoded_data = label_encoder.fit_transform(received_data)
-    #         # print(encoded_data,"encoded data")
-
-    #         # # Reshape the encoded data to make it 2D
-    #         # reshaped_encoded_data = encoded_data.reshape(4, 5)
-    #         # print(reshaped_encoded_data,"reshaped encoded data")
-
-            
-    #         with open(r'backend/model/data.pkl', 'rb') as f:
-    #             model = pickle.load(f)
-    #             print(model)
-            
-            
-    #         predictions = model.predict(tfidf_matrix)
-    #         print('Predictions:', predictions)
-
-    #         if prediction[0] == 1:
-    #             return jsonify({"prediction": "The model predicts that the user has mental issues."})
-    #         else:
-    #             return jsonify({"prediction": "The model predicts that the user does not have mental issues."})
-    #         return JsonResponse({'success': True, 'message': 'Data received and processed successfully'})
-    #     except json.JSONDecodeError:
-    #         return JsonResponse({'success': False, 'message': 'Invalid JSON data'})
-    # else:
-    #     return JsonResponse({'success': False, 'message': 'Invalid request method'})
-
+    return JsonResponse({'success': False, 'message': 'Invalid request method. Use POST.'})
 
 @csrf_exempt
 def receive_data(request):

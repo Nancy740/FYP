@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import login,register,forgot,sentiment,contact,forgot,reset,medical,checkuser
+from .views import login,register,forgot,sentiment,contact,reset,medical,checkuser
 
 
 
 urlpatterns = [
-
     path('login/', login, name='login'),
     path('register/', register, name='register'),
     path('forgot/', forgot, name='forgot'),
@@ -15,7 +14,4 @@ urlpatterns = [
     path('medical/', medical, name='medical'),
     path('checkuser/',checkuser,name="checkuser"),
     # path('predictions/', predictions, name='predictions'),
-
-
-   
-]
+   ]
