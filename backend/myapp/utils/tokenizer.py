@@ -54,8 +54,8 @@ stpwrd.extend(emoticons)
 # get train_examples
 columns = ["target", "ids", "date", "flag", "user", "text"]
 training_data = pd.read_csv('backend/model/training.1600000.processed.noemoticon.csv', encoding='latin_1', names=columns)
-train_neg = training_data[:10000]
-train_pos = training_data[1590000:]
+train_neg = training_data[:800000]
+train_pos = training_data[800000:]
 train_neg = preprocess_data(train_neg.drop(['ids', 'date', 'flag', 'user'], axis=1))
 train_pos = preprocess_data(train_pos.drop(['ids', 'date', 'flag', 'user'], axis=1))
 train_examples =pd.concat([train_neg, train_pos])
@@ -64,4 +64,4 @@ tokenizer = Tokenizer()
 tokenizer.fit_on_texts(train_examples.text)
 
 # load model
-# loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')                                                   
+loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')                                                   
