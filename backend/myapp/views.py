@@ -135,69 +135,38 @@ def predict(text, model_1, include_neutral=True):
 def sentiment(request):
     if request.method == 'POST':
         try:
+            # load model
+            loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')                                                   
+            print("predict", predict("I hate women", loaded_model))
+            # print("predict", predict("Yes I have experienced apeptite changes", loaded_model))
             data = json.loads(request.body)
-            print(data)
 
             # Extracting answers from request data
             answers_part1 = data.get('answerpart1', [])
             answers_part2 = data.get('answerpart2', [])
-            print(os.getcwd())
-            answer_part1_result=[]
-            with open('myapp/utils/payload1_transform.json','r') as part1_file:
-                json_dict1=json.load(part1_file)
-                for count,answerpart in enumerate(answers_part1):
-                    print(json_dict1[str(count+1)][answerpart])
-            with open('myapp/utils/payload2_transform.json','r') as part2_file:
-                json_dict2=json.load(part2_file)
-                for count,answerpart in enumerate(answers_part2):
-                    print(json_dict2[str(count+1)][answerpart])
 
             # Combining answers from both parts
             received_data = answers_part1 + answers_part2
-            print(received_data)
+            print("received_data", received_data)
 
-            # try:
-                # model_1 = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')
-                # print(predict("I love her", model_1))
+            # predict answers and store in array
+            answer_part1_result=[]
+            answer_part2_result=[]
+            # with open('myapp/utils/payload1_transform.json','r') as part1_file:
+            #     json_dict1=json.load(part1_file)
+            #     for count,answerpart in enumerate(answers_part1):
+            #         print(json_dict1[str(count+1)][answerpart])
+            #         predicted_score = predict(str(json_dict1[str(count+1)][answerpart]), loaded_model)
+            #         print("predicted_score", predicted_score)
+            #         # answer_part1_result.append(predict(json_dict1[str(count+1)][answerpart], loaded_model))
+            # with open('myapp/utils/payload2_transform.json','r') as part2_file:
+            #     json_dict2=json.load(part2_file)
+            #     for count,answerpart in enumerate(answers_part2):
+            #         print(json_dict2[str(count+1)][answerpart])
+                    # answer_part2_result.append(predict(json_dict2[str(count+1)][answerpart], loaded_model))
 
-                # Loading the trained model and tokenizer
-                # with open(r'backend/model/lstm.pkl', 'rb') as f: 
-                #     model_data = pickle.load(f)
-                #     print(model_data)
-                # loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')
-                # loaded_model = model_data['model']
-                # print(loaded_model)
-                # tokenizer = model_data['tokenizer']
-                # max_sequence_length = model_data['max_sequence_length']
+            # print("answers \n", answer_part1_result, "\n", answer_part2_result)
 
-            
-            # except FileNotFoundError:
-            #     return JsonResponse({'success': False, 'message': 'Could not find the pickle file.'})
-            # except KeyError:
-            #     return JsonResponse({'success': False, 'message': 'Missing required keys in the pickle file.'})
-            # except Exception as e:
-            #     print(f"Error: {e}")
-            #     return JsonResponse({'success': False, 'message': 'An error occurred while loading the model.'})
-
-            loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')
-            print(predict("I love women", loaded_model))
-            
-            # # Tokenize the user input
-            # tokenizer = Tokenizer()
-            # input_text_seq = tokenizer.texts_to_sequences([received_data])
-            # input_text_pad = pad_sequences(input_text_seq, maxlen=max_sequence_length)
-
-            # # Make predictions using the loaded model
-            # predictions = loaded_model.predict(input_text_pad)
-
-            # # Get the predicted class label
-            # predicted_label = np.argmax(predictions[0])
-
-            # # Map the predicted label to the corresponding class name
-            # class_names = ['Depression', 'Anxiety', 'Normal']
-            # predicted_class = class_names[predicted_label]
-            # print("predicted_class")
-            # return JsonResponse({'success': True, 'predicted_class': predicted_class})
 
         except Exception as e:
             print(f"Error: {e}")
