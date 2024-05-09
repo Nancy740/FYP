@@ -1,0 +1,109 @@
+/* .edit-container {
+  width: 70vh;
+  margin: 0 auto;
+} */
+
+.outer-container {
+    background: scroll;
+    background-color: #99B4DF;
+}
+
+.edit-container {
+    width: 70vh;
+    margin: 0 auto;
+    height: 80vh;
+   
+  }
+.e-heading img {
+  width: 15vh;
+  height: 15vh;
+  margin-bottom: 10px;
+  margin-top: 30px;
+ 
+}
+.edit-sections {
+    display: inline-flex;
+    border: 1px solid #ccc; /* Add border around the entire form */
+    padding: 20px;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+.sections{
+    margin-left: 5rem;
+}
+#gender{
+    width:60vh;
+    height: 4vh;
+    background: #99b4df;
+}
+  .changephoto{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    outline: 0;
+    border: 0;
+
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+
+   
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: black;
+    background-color: #fff;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+
+.inputs {
+  margin-bottom: 10px;
+}
+
+.inputs input {
+  width: 60vh;
+  border: none; /* Remove the border */
+  border-bottom: 1px solid black; /* Add a bottom border */
+  outline: none; /* Remove the default outline */
+  background: #99b4df;
+}
+.edit-button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    outline: 0;
+    border: 0;
+    margin-left: 10rem;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 6px 16px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: #fff;
+    background-color: #1976d2;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+  

@@ -1,0 +1,32 @@
+.outercontainer {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 9999; /* Add a higher z-index value to ensure it appears on top */
+  display: flex;
+  justify-content: flex-end;
+  background-color: transparent;
+}
+
+.user-container {
+  
+  width: 35vh;
+  background-color: #99b4df;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 75vh;
+  display: flex;
+  flex-direction: column; /* Change flex-direction to column */
+  align-items: center; /* Center align items horizontally */
+}
+
+.profile-container {
+  height: 30px;
+  margin-bottom: 20px; /* Add some spacing between the profile image and other content */
+}
+
+.profile-container img {
+  width: 15vh;
+  height: 15vh;
+}

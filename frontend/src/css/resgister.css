@@ -1,0 +1,45 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  background-color: #99B4DF; 
+  }
+
+.Register {
+  width: 55vh;
+  background-color: #99B4DF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 65vh;
+}
+
+
+
+.Register h1{
+  color: aliceblue;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.login-link{
+  margin-left: 3rem;
+}
+
+.login-link a {
+  color: aliceblue; 
+  text-decoration: none; 
+  font-size: 12px;
+  margin-left: 6rem;
+}
+
+.login-link a:hover {
+  text-decoration: underline; 
+  cursor: pointer; 
+  color: #1f3b7e;
+}
+
+

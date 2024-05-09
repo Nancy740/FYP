@@ -1,0 +1,42 @@
+{
+  "1": {
+    "yes": "Yes I have been feeling down or depressed ",
+    "no": "No I havent been feeling down or depressed "
+  },
+  "2": {
+    "yes": "Yes I often feel overwhelmed or unable to cope with daily stressors",
+    "no": "No I dont feel overwhelmed or unable to cope with daily stressors"
+  },
+  "3": {
+    "yes": "Yes I have experienced frequent mood swings",
+    "no": "No I havent experienced frequent mood swings"
+  },
+  "4": {
+    "yes": "Yes I often feel irritable or easily angered, even over minor issues",
+    "no": "No I dont feel irritable or easily angered, even over minor issues"
+  },
+  "5": {
+    "yes": "Yes I have noticed a decrease in my self-esteem or feelings of worthlessness",
+    "no": "No I havent noticed a decrease in my self-esteem or feelings of worthlessness"
+  },
+  "6": {
+    "yes": "Yes I frequently experience feelings of guilt or shame",
+    "no": "No I frequently experience feelings of guilt or shame"
+  },
+  "7": {
+    "yes": "Yes I have had difficulty enjoying activities or hobbies that I used to find pleasurable",
+    "no": "No I havent had difficulty enjoying activities or hobbies that I used to find pleasurable"
+  },
+  "8": {
+    "yes": "Yes I often feel lonely or isolated from others",
+    "no": "No I dont feel lonely or isolated from others"
+  },
+  "9": {
+    "yes": "Yes I have had trouble expressing my emotions or communicating with others",
+    "no": "No I havent had trouble expressing my emotions or communicating with others"
+  },
+  "10": {
+    "yes": "Yes I often worry excessively about the future",
+    "no": "No I dont worry excessively about the future"
+  }
+}

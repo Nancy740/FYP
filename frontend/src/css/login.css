@@ -1,0 +1,183 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #99B4DF; 
+  }
+
+.Login {
+  width: 55vh;
+  background-color: #99B4DF;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 60vh;
+}
+
+.register-message {
+  background-color: #d4edda; /* Green background color */
+  color: #155724; /* Dark green text color */
+  padding: 10px; /* Add padding */
+  margin-bottom: 10px; /* Add margin to separate from other elements */
+  border: 1px solid #c3e6cb; /* Add border */
+  border-radius: 4px; /* Add border radius */
+  text-align: center;
+}
+#logo {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  width: 100px;
+  margin: 0 auto; 
+  display: block; 
+}
+.Login h1{
+  color: aliceblue;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+.inputform {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+  width: 50vh;
+  align-items: center;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 3px 3px;
+}
+.inputform input {
+  padding-left: 30px; 
+  margin: 5px 5px;
+  width: 100%;
+  font-size: 12px;
+  border-radius: 8px;
+  outline: none;
+  height: 3vh;
+  border: 1px solid white;
+ 
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.remember-forgot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
+
+
+
+#forgot-link {
+  text-decoration: none;
+}
+
+.remember-forgot label{
+
+  color: aliceblue;
+  font-size: 12px;
+
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  margin-left: 1rem;
+}
+
+.remember-forgot a {
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 12px; 
+  margin-right: 2rem;
+}
+#forgot-link:hover {
+  cursor: pointer; 
+  color: #1f3b7e; 
+  text-decoration: underline; 
+}
+
+.button {
+  background-color: #55bcfb;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 5px 5px;
+  width: 50vh;
+  border-radius: 8px;
+  border: none;
+  color: aliceblue;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+ 
+}
+.social-button {
+  background-color: #55bcfb;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 5px 5px;
+  width: 50vh;
+  border-radius: 8px;
+  border: none;
+  color: aliceblue;
+  margin-bottom: 10px;
+
+}
+
+.social-icon {
+  margin-right: 15px; 
+}
+button:hover {
+  background-color: #1f3b7e;
+}
+
+.error {
+  color: red;
+}
+
+.register-link a {
+  color: aliceblue; 
+  text-decoration: none; 
+  font-size: 12px;
+  margin-left: 10rem;
+  margin-top: 10px;
+
+  
+}
+
+.register-link a:hover {
+  text-decoration: underline; 
+  cursor: pointer; 
+  color: #1f3b7e;
+}
+
+img,svg{
+  color: rgb(26, 61, 125);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}
