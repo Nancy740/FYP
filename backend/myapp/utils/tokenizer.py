@@ -45,6 +45,7 @@ def preprocess_data(data):
 # nltk works 
 nltk.download('stopwords')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
 emoticons = [":)", ':-)', ': )', ':D', '=)', ':(', ':-(', ': (']
 stpwrd = nltk.corpus.stopwords.words('english')
 stpwrd.extend(emoticons)

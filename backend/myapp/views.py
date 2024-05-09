@@ -29,7 +29,8 @@ from json import loads, dumps
 from tensorflow import keras
 # from tensorflow.python.keras.saving import pickle_utils
 
-from .utils.tokenizer import tokenizer
+# from .utils.tokenizer import tokenizer
+from .utils.sentiment_analysis import tokenizer
 
 @csrf_exempt
 def login(request):
@@ -152,20 +153,20 @@ def sentiment(request):
             # predict answers and store in array
             answer_part1_result=[]
             answer_part2_result=[]
-            # with open('myapp/utils/payload1_transform.json','r') as part1_file:
-            #     json_dict1=json.load(part1_file)
-            #     for count,answerpart in enumerate(answers_part1):
-            #         print(json_dict1[str(count+1)][answerpart])
-            #         predicted_score = predict(str(json_dict1[str(count+1)][answerpart]), loaded_model)
-            #         print("predicted_score", predicted_score)
-            #         # answer_part1_result.append(predict(json_dict1[str(count+1)][answerpart], loaded_model))
-            # with open('myapp/utils/payload2_transform.json','r') as part2_file:
-            #     json_dict2=json.load(part2_file)
-            #     for count,answerpart in enumerate(answers_part2):
-            #         print(json_dict2[str(count+1)][answerpart])
-                    # answer_part2_result.append(predict(json_dict2[str(count+1)][answerpart], loaded_model))
+            with open('myapp/utils/payload1_transform.json','r') as part1_file:
+                json_dict1=json.load(part1_file)
+                for count,answerpart in enumerate(answers_part1):
+                    print(json_dict1[str(count+1)][answerpart])
+                    predicted_score = predict(str(json_dict1[str(count+1)][answerpart]), loaded_model)
+                    print("predicted_score", predicted_score)
+                    # answer_part1_result.append(predict(json_dict1[str(count+1)][answerpart], loaded_model))
+            with open('myapp/utils/payload2_transform.json','r') as part2_file:
+                json_dict2=json.load(part2_file)
+                for count,answerpart in enumerate(answers_part2):
+                    print(json_dict2[str(count+1)][answerpart])
+                    answer_part2_result.append(predict(json_dict2[str(count+1)][answerpart], loaded_model))
 
-            # print("answers \n", answer_part1_result, "\n", answer_part2_result)
+            print("answers \n", answer_part1_result, "\n", answer_part2_result)
 
 
         except Exception as e:
