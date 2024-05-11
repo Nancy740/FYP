@@ -1,0 +1,43 @@
+{
+  "1": {
+    "yes": "I feel hungry often",
+    "no": "I don't feel hungry"
+  },
+  "2": {
+    "yes": "I feel sleepy",
+    "no": "I don't feel sleepy"
+  },
+  "3": {
+    "yes": "My head hurts",
+    "no": "My head don't hurt"
+  },
+  "4": {
+    "yes": "My body is in pain",
+    "no": "My body not in pain"
+  },
+  "5": {
+    "yes": "I feel lazy",
+    "no": "I don't feel lazy"
+  },
+  "6": {
+    "yes": "I can eat",
+    "no": "I can't eat"
+  },
+  "7": {
+    "yes": "My weight change",
+    "no": "I am healthy"
+  },
+  "8": {
+    "yes": "I feel sad",
+    "no": "I don't feel sad"
+  },
+  "9": {
+    "yes": "I feel it",
+    "no": "I don't feel it"
+  },
+  "10": {
+    "yes": "I feel tired",
+    "no": "I dont feel tired"
+  }
+}
+

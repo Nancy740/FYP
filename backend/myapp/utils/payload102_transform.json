@@ -1,0 +1,42 @@
+{
+  "1": {
+    "yes": "I feel sad ",
+    "no": "I don't feel sad "
+  },
+  "2": {
+    "yes": "I think a lot",
+    "no": "I dont think much"
+  },
+  "3": {
+    "yes": "I feel happy and sad",
+    "no": "I don't feel happy and sad"
+  },
+  "4": {
+    "yes": "I get angry often",
+    "no": "I don't get angry often"
+  },
+  "5": {
+    "yes": "I feel low",
+    "no": "I feel high"
+  },
+  "6": {
+    "yes": "I feel shame",
+    "no": "I feel proud"
+  },
+  "7": {
+    "yes": "I don't enjoy a lot",
+    "no": "I enjoy a lot"
+  },
+  "8": {
+    "yes": "I feel lonely",
+    "no": "I don't feel lonely"
+  },
+  "9": {
+    "yes": "I don't talk",
+    "no": "I meet people"
+  },
+  "10": {
+    "yes": "I think about future a lot",
+    "no": "I don't think about future a lot" 
+  }
+}

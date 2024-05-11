@@ -64,4 +64,5 @@ tokenizer = Tokenizer()
 tokenizer.fit_on_texts(train_examples.text)
 
 # load model
-loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')                                                   
+# loaded_model = keras.models.load_model('backend/model/Sentiment_LSTM_model.h5')                                                   
+loaded_model = keras.models.load_model('backend/model/sentiment_2.h5')                                                   
