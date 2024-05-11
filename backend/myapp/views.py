@@ -137,7 +137,6 @@ def sentiment(request):
         try:
             # loaded_model = keras.models.load_model('backend/model/sentiment_2.h5')                                                   
             # print("predict", predict("I hate women", loaded_model))
-            print("predict", predict("Yes I feel sad often", loaded_model))
 
             data = json.loads(request.body)
 

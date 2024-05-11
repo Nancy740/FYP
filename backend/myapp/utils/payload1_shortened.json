@@ -1,0 +1,42 @@
+{
+  "1": {
+    "yes": "Yes I have experienced changes in my appetite",
+    "no": "No I havent experienced changes in my appetite"
+  },
+  "2": {
+    "yes": "Yes I have noticed changes in my sleep patterns",
+    "no": "No I havent noticed changes in my sleep patterns"
+  },
+  "3": {
+    "yes": "Yes I frequently experience headaches or migraines",
+    "no": "No I donot experience headaches or migraines"
+  },
+  "4": {
+    "yes": "Yes I have had unexplained aches or pains in my body",
+    "no": "No I havent had unexplained aches or pains in my body"
+  },
+  "5": {
+    "yes": "Yes I have noticed changes in my energy levels",
+    "no": "No I havent noticed changes in my energy levels"
+  },
+  "6": {
+    "yes": "Yes I have experienced digestive issues",
+    "no": "No I havent experienced digestive issues"
+  },
+  "7": {
+    "yes": "Yes I have had changes in my weight",
+    "no": "No I havent had changes in my weight"
+  },
+  "8": {
+    "yes": "Yes I have frequently experience physical symptoms of anxiety",
+    "no": "No I havent frequently experience physical symptoms of anxiety"
+  },
+  "9": {
+    "yes": "Yes I have noticed changes in my sexual desire or functioning",
+    "no": "No I havent noticed changes in your sexual desire or functioning"
+  },
+  "10": {
+    "yes": "Yes I often feel physically tense or on edge",
+    "no": "No I dont feel physically tense or on edge"
+  }
+}

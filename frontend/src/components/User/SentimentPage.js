@@ -5,6 +5,7 @@ import Footer from "./Footer";
 // import Button from "@mui/material/Button";
 
 const SentimentPage = () => {
+  const [response, setResponse] = useState("");
   const [answersPart1, setAnswersPart1] = useState(Array(10).fill(""));
   const [answersPart2, setAnswersPart2] = useState(Array(10).fill(""));
   const [submitting, setSubmitting] = useState(false);
@@ -44,14 +45,23 @@ const SentimentPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      });
+      })
+        .then((res) => res.json())
+        .then((data) => data);
 
-      if (response.ok) {
+      if (response.success) {
+        setResponse(
+          `Your status is ${
+            response?.data?.label
+          } with score ${response?.data?.score?.toFixed(2)}`
+        );
         console.log("Data submitted successfully");
       } else {
+        setResponse("Something went wrong");
         console.error("Failed to submit data");
       }
     } catch (error) {
+      // setResponse('Network error:')
       console.error("Network error:", error);
     }
     setSubmitting(false);
@@ -143,10 +153,15 @@ const SentimentPage = () => {
             "9. Have you had trouble expressing your emotions or communicating with others?",
             "10. Do you often worry excessively about the future or have intrusive thoughts about potential negative outcomes?",
           ])}
+          <div className="question">
+            {(answersPart1?.some((x) => x === "") ||
+              answersPart2?.some((y) => y === "")) &&
+              submitting && (
+                <div style={{ color: "red" }}>Select all answers!!!</div>
+              )}
+            {setResponse && !submitting && <>{response}</>}
+          </div>
         </div>
-        {(answersPart1?.some((x) => x === "") ||
-          answersPart2?.some((y) => y === "")) &&
-          submitting && <>Select all answers!!!</>}
         <button className="submit-button" onClick={submit}>
           Submit
         </button>
