@@ -195,3 +195,6 @@ backend/backend/model/*.csv
 csv_files
 csv_files/*
 *.csv
+
+
+fyp/
