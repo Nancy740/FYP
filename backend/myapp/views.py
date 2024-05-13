@@ -133,8 +133,13 @@ def predict(text, model_1, include_neutral=True):
            
 @csrf_exempt
 def sentiment(request):
-    # user_id = request.user.id
-    # user = UserAuth.objects.get(id=user_id)
+    user_id = request.user.id
+    try:
+        user_obj = UserAuth.objects.get(id=user_id)
+        user = user_obj.name
+    except:
+        count = SentimentPredictionRecord.objects.all().count()
+        user = f"user_{count}"
 
     if request.method == 'POST':
         try:
@@ -188,7 +193,7 @@ def sentiment(request):
                 }
 
             print("context", context)
-            # SentimentPredictionRecord.create(user, average_score, label)
+            SentimentPredictionRecord.create(user, average_score, label)
 
             return JsonResponse({'success':True, 'data':context})
         

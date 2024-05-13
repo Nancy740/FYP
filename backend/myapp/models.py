@@ -37,15 +37,16 @@ class MedicalRecord(models.Model):
         return self.full_name
 
 class SentimentPredictionRecord(models.Model):
-    user = models.ForeignKey('UserAuth', on_delete=models.DO_NOTHING)
+    # user = models.ForeignKey('UserAuth', on_delete=models.DO_NOTHING)
+    name = models.CharField(max_length=50)
     sentiment_score = models.FloatField()
     sentiment_status = models.CharField(max_length=10)
     created_at = models.DateTimeField(default=datetime.now)
 
     @classmethod
-    def create(cls, user, sentiment_score, sentiment_status):
+    def create(cls, name, sentiment_score, sentiment_status):
         return cls.objects.create(
-                user=user,
+                name=name,
                 sentiment_score=sentiment_score,
                 sentiment_status=sentiment_status,
                 )
