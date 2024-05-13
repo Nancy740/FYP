@@ -133,6 +133,9 @@ def predict(text, model_1, include_neutral=True):
            
 @csrf_exempt
 def sentiment(request):
+    # user_id = request.user.id
+    # user = UserAuth.objects.get(id=user_id)
+
     if request.method == 'POST':
         try:
             # loaded_model = keras.models.load_model('backend/model/sentiment_2.h5')                                                   
@@ -185,6 +188,7 @@ def sentiment(request):
                 }
 
             print("context", context)
+            # SentimentPredictionRecord.create(user, average_score, label)
 
             return JsonResponse({'success':True, 'data':context})
         
